@@ -1,0 +1,92 @@
+BigQuery Notes: 
+SELECT, FROM, and WHERE
+
+ 1. SELECT Clause
+- Purpose: Specifies the columns or expressions you want to retrieve from a table.
+- Syntax:
+  SELECT column1, column2, ...
+  FROM table_name;
+
+- Example:
+  SELECT employee_id, first_name, last_name 
+  FROM hr.employees;
+
+- Key Points:
+  - Use `*` to select all columns:
+    SELECT * FROM hr.employees;
+
+  - You can use expressions (e.g., calculations, concatenation):
+    SELECT first_name || ' ' || last_name AS full_name 
+    FROM hr.employees;
+
+---
+
+ 2. FROM Clause
+- Purpose: Specifies the table(s) from which to retrieve data.
+- Syntax:
+  SELECT column1, column2
+  FROM table_name;
+
+- Example:
+  SELECT department_id, salary 
+  FROM hr.employees;
+
+- Key Points:
+  - Can reference multiple tables with JOINs or subqueries (covered later).
+  - Ensure the table exists and you have access rights.
+
+---
+
+ 3. WHERE Clause
+- Purpose: Filters rows based on specified conditions.
+- Syntax:
+  SELECT column1, column2
+  FROM table_name
+  WHERE condition;
+
+- Example:
+  SELECT first_name, salary
+  FROM hr.employees
+  WHERE salary > 5000;
+
+- Key Points:
+  - Use logical operators like `AND`, `OR`, and `NOT`:
+    SELECT first_name, department_id
+    FROM hr.employees
+    WHERE department_id = 10 AND salary > 7000;
+
+  - You can use comparison operators (`=`, `<`, `>`, `<=`, `>=`, `!=`) and SQL keywords (`LIKE`, `IN`, `BETWEEN`).
+
+---
+
+ Execution Order in BigQuery
+1. FROM Clause:
+   - The source table(s) is identified first.
+   - For example, `hr.employees` is accessed.
+
+2. WHERE Clause:
+   - Rows are filtered based on conditions.
+   - Example: Only rows where `salary > 5000` are retained.
+
+3. SELECT Clause:
+   - Columns or expressions specified are retrieved after filtering.
+   - Example: Only `first_name` and `salary` of employees are returned.
+
+---
+
+Practical Example
+SELECT first_name, last_name, department_id
+FROM hr.employees
+WHERE department_id = 20 AND salary > 6000;
+
+Execution Steps:
+1. FROM: Access the `hr.employees` table.
+2. WHERE: Filter rows where `department_id` is 20 and `salary` is greater than 6000.
+3. SELECT: Retrieve `first_name`, `last_name`, and `department_id` from the filtered rows.
+
+---
+
+Tips for Efficient Querying
+1. Use specific columns in `SELECT` instead of `*` to optimize performance.
+2. Filter rows as early as possible using `WHERE` for faster query execution.
+3. Use indexed or partitioned columns in `WHERE` for better performance.
