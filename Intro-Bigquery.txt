@@ -1,0 +1,85 @@
+What is Data?
+    Data is raw information or facts collected for reference or analysis. 
+    It can be numbers, words, measurements, or observations that are used to 
+    understand and make decisions about a specific topic.
+
+Example:
+    A list of customers' names and addresses collected by a store.
+    Daily temperatures recorded by a weather station.
+
+How Much Data Is Generated Daily?
+    Every day, around 328.77 million terabytes of data is generated worldwide (as of recent estimates). 
+This explosion of data comes from social media, emails, online shopping, streaming platforms, 
+IoT devices, and more.
+
+Importance of Data Management
+    With this massive amount of data, managing it effectively is critical. 
+
+Poorly managed data can lead to:
+    Wasted resources.
+    Missed opportunities for insights.
+    Reduced efficiency in decision-making.
+
+Data management ensures that the right data is collected, stored, secured, and 
+analyzed effectively to derive actionable insights.
+
+What is a Database?
+A database is a structured collection of data stored electronically for easy access, retrieval, and management.
+
+Example of Databases:
+Banking: Storing customer details, account balances, and transaction histories.
+E-commerce: Keeping track of products, inventory, and orders.
+
+In databases, data is stored in tables consisting of:
+Rows: Represent individual records (e.g., a single customer's data).
+Columns: Represent attributes (e.g., name, age, or account balance).
+
+What is a Data Warehouse?
+A data warehouse is a centralized system designed for storing and analyzing large volumes 
+of historical data from multiple sources. 
+It is optimized for queries and analytics rather than transaction processing.
+
+Key Differences from Databases:
+    Databases focus on real-time operations (e.g., ATM transactions).
+    Data warehouses focus on aggregating and analyzing data (e.g., monthly sales reports).
+
+Examples of Data Warehouses:
+    Retail: Analyzing sales trends across all stores for decision-making.
+    Healthcare: Storing historical patient records for research purposes.
+
+Introduction to BigQuery
+    BigQuery is Google’s cloud-based data warehouse solution. 
+    It allows businesses to store and analyze massive datasets in real-time using SQL-like queries.
+
+Scalability: Handle petabytes of data seamlessly.
+Speed: Quickly process and analyze data using Google’s infrastructure.
+Integration: Works well with Google Cloud services, making it ideal for data engineering tasks.
+
+How Data is Stored in Tables
+    In both databases and data warehouses, data is organized in tables. 
+
+A table has:
+Rows: Each row is a single data record (e.g., one customer).
+Columns: Each column stores a specific type of data (e.g., name, email, age).
+
+For example:
+| Customer_ID | Name        | Age | Email                |
+|-------------|-------------|-----|----------------------|
+| 1           | John Doe    |  30 | john@example.com     |
+| 2           | Jane Smith  |  25 | jane@example.com     |
+
+
+In BigQuery, the tables can be partitioned (divided into smaller pieces for faster access) and 
+clustered (grouped based on similar data).
+
+Real-Time Examples
+Data Example:
+    A social media post contains text, images, and user reactions—all considered raw data.
+Database Example:
+    A database stores your login credentials and profile information when you sign up for a streaming platform.
+Data Warehouse Example:
+    A company collects data from its sales, customer feedback, and website traffic and uses a data warehouse to generate reports on customer behavior and future market trends.
+
+Summary
+  Understanding the importance of data, databases, and data warehouses is crucial in today’s world where data drives business decisions. 
+  Tools like BigQuery make it easier to handle, store, and analyze vast amounts of data effectively, enabling organizations to stay competitive.
