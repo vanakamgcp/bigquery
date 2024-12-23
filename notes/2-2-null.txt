@@ -1,0 +1,122 @@
+BigQuery Notes: Understanding NULL
+
+What is NULL?
+- In SQL, `NULL` represents a missing or undefined value.
+- It is not the same as zero, an empty string, or a blank space.
+- Any operation or comparison involving `NULL` returns `NULL`, except when explicitly handled.
+
+---
+
+Key Points About NULL
+1. `NULL` is a placeholder for unknown or missing data.
+2. Arithmetic or logical operations with `NULL` return `NULL`.
+3. Use specific operators (`IS NULL`, `IS NOT NULL`) to work with `NULL` values.
+4. `NULL` is not equal to anything, including itself.
+
+---
+
+Syntax to Handle NULL
+- Check for `NULL`:
+  SELECT column1
+  FROM table_name
+  WHERE column_name IS NULL;
+
+- Check for non-`NULL`:
+  SELECT column1
+  FROM table_name
+  WHERE column_name IS NOT NULL;
+
+---
+
+Real-Time Examples Using `hr.employees` Table
+
+1. Missing Employee Email Addresses  
+   Query:
+   SELECT employee_id, first_name, email
+   FROM hr.employees
+   WHERE email IS NULL;
+   Explanation: This query retrieves employees who do not have an email address recorded in the database.
+
+2. Checking Non-Missing Department IDs  
+   Query:
+   SELECT employee_id, first_name, department_id
+   FROM hr.employees
+   WHERE department_id IS NOT NULL;
+   Explanation: This query retrieves employees who are assigned to a department.
+
+3. Handling NULL in Calculations  
+   Query:
+   SELECT first_name, salary, salary * 0.1 AS bonus
+   FROM hr.employees;
+   Issue: If `salary` is `NULL`, the `bonus` calculation also returns `NULL`.
+
+---
+
+Comparison with NULL
+
+1. Incorrect Comparison  
+   SELECT first_name
+   FROM hr.employees
+   WHERE email = NULL;
+   Explanation: This query always returns zero rows because `NULL = NULL` is not valid.
+
+2. Correct Comparison Using IS NULL  
+   SELECT first_name
+   FROM hr.employees
+   WHERE email IS NULL;
+   Explanation: This query correctly checks for missing email addresses.
+
+---
+
+Real-Life Scenario Examples
+
+1. E-Commerce:
+   - Scenario: Missing shipping address for an order.
+   - Query:
+     SELECT order_id, customer_name
+     FROM orders
+     WHERE shipping_address IS NULL;
+   - Use Case: Identify customers who need to provide their shipping address.
+
+2. Healthcare:
+   - Scenario: Missing patient contact details.
+   - Query:
+     SELECT patient_id, name
+     FROM patients
+     WHERE phone_number IS NULL;
+   - Use Case: Notify the staff to update missing patient contact information.
+
+3. Education:
+   - Scenario: Students without grades.
+   - Query:
+     SELECT student_id, name
+     FROM grades
+     WHERE grade IS NULL;
+   - Use Case: Identify students whose grades are yet to be entered.
+
+---
+
+Key Functions to Handle NULL
+
+1. COALESCE  
+   - Replaces `NULL` with a specified value.
+   - Example:
+     SELECT first_name, COALESCE(phone_number, 'Not Provided') AS phone
+     FROM hr.employees;
+
+2. IFNULL (MySQL equivalent, not in BigQuery)  
+   - Acts similarly to `COALESCE`.
+
+3. NULLIF  
+   - Returns `NULL` if two values are equal.
+   - Example:
+     SELECT NULLIF(salary, 0) AS valid_salary
+     FROM hr.employees;
+
+---
+
+Summary
+- `NULL` represents missing or undefined data in SQL.
+- Use `IS NULL` and `IS NOT NULL` to identify or exclude `NULL` values.
+- Functions like `COALESCE` and `NULLIF` help manage `NULL` effectively.
+- Always account for `NULL` when designing queries to avoid unexpected results.
