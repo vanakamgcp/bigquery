@@ -1,0 +1,153 @@
+BigQuery Notes: Operators and Their Types
+
+What Are Operators?
+Operators are symbols or keywords used to perform operations on values in 
+SQL queries. 
+In BigQuery, operators are categorized into various types based on their 
+functionality.
+
+---
+
+1. Arithmetic Operators
+- Purpose: Perform mathematical operations.
+- Types and Syntax:
+  - `+` (Addition): Adds two values.
+    Example:
+    SELECT salary + 1000 AS updated_salary
+    FROM hr.employees;
+
+  - `-` (Subtraction): Subtracts one value from another.
+    Example:
+    SELECT salary - 500 AS reduced_salary
+    FROM hr.employees;
+
+  - `*` (Multiplication): Multiplies two values.
+    Example:
+    SELECT salary * 2 AS double_salary
+    FROM hr.employees;
+
+  - `/` (Division): Divides one value by another.
+    Example:
+    SELECT salary / 2 AS half_salary
+    FROM hr.employees;
+
+  - `%` (Modulo): Returns the remainder of division.
+    Example:
+    SELECT employee_id, salary % 3 AS remainder
+    FROM hr.employees;
+
+---
+
+2. Comparison Operators
+- Purpose: Compare two values and return a boolean result (TRUE, FALSE).
+- Types and Syntax:
+  - `=` (Equal): Checks if two values are equal.
+    Example:
+    SELECT first_name, department_id
+    FROM hr.employees
+    WHERE department_id = 10;
+
+  - `!=` or `<>` (Not Equal): Checks if two values are not equal.
+    Example:
+    SELECT first_name, salary
+    FROM hr.employees
+    WHERE salary != 5000;
+
+  - `<` (Less Than): Checks if the left value is less than the right value.
+    Example:
+    SELECT first_name, salary
+    FROM hr.employees
+    WHERE salary < 3000;
+
+  - `>` (Greater Than): Checks if the left value is greater than the right value.
+    Example:
+    SELECT first_name, salary
+    FROM hr.employees
+    WHERE salary > 7000;
+
+  - `<=` (Less Than or Equal To): Checks if the left value is less than or equal to the right value.
+    Example:
+    SELECT first_name, salary
+    FROM hr.employees
+    WHERE salary <= 4000;
+
+  - `>=` (Greater Than or Equal To): Checks if the left value is greater than or equal to the right value.
+    Example:
+    SELECT first_name, salary
+    FROM hr.employees
+    WHERE salary >= 6000;
+
+---
+
+3. Logical Operators
+- Purpose: Combine multiple conditions in a `WHERE` clause.
+- Types and Syntax:
+  - `AND`: Returns TRUE if all conditions are TRUE.
+    Example:
+    SELECT first_name, department_id
+    FROM hr.employees
+    WHERE department_id = 10 AND salary > 5000;
+
+  - `OR`: Returns TRUE if at least one condition is TRUE.
+    Example:
+    SELECT first_name, department_id
+    FROM hr.employees
+    WHERE department_id = 20 OR salary > 6000;
+
+  - `NOT`: Negates a condition.
+    Example:
+    SELECT first_name, department_id
+    FROM hr.employees
+    WHERE NOT department_id = 30;
+
+---
+
+4. String Operators
+- Purpose: Perform operations on string values.
+- Types and Syntax:
+  - `||` (Concatenation): Concatenates two strings.
+    Example:
+    SELECT first_name || ' ' || last_name AS full_name
+    FROM hr.employees;
+
+  - `LIKE`: Searches for a specified pattern in a string.
+    Example:
+    SELECT first_name, last_name
+    FROM hr.employees
+    WHERE first_name LIKE 'J%';
+
+
+
+---
+
+5. Special Operators
+- Purpose: Provide additional filtering options.
+- Types and Syntax:
+  - `IN`: Checks if a value matches any value in a list.
+    Example:
+    SELECT first_name, department_id
+    FROM hr.employees
+    WHERE department_id IN (10, 20, 30);
+
+  - `BETWEEN`: Checks if a value is within a range.
+    Example:
+    SELECT first_name, salary
+    FROM hr.employees
+    WHERE salary BETWEEN 3000 AND 7000;
+
+  - `IS NULL`: Checks if a value is NULL.
+    Example:
+    SELECT first_name, department_id
+    FROM hr.employees
+    WHERE department_id IS NULL;
+
+  - `IS NOT NULL`: Checks if a value is not NULL.
+    Example:
+    SELECT first_name, department_id
+    FROM hr.employees
+    WHERE department_id IS NOT NULL;
+
+---
+
+Summary
+Operators are essential for performing calculations, comparisons, and logical operations in BigQuery. By combining these operators effectively, you can create powerful and efficient queries for analyzing data in tables like `hr.employees`.

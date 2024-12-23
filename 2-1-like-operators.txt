@@ -1,0 +1,103 @@
+BigQuery Notes: 
+LIKE Operator
+
+What is the LIKE Operator?
+- The `LIKE` operator is used in the `WHERE` clause to search for a specified pattern in a column.
+- Patterns can include wildcard characters for flexible matching.
+
+---
+
+Syntax
+SELECT column1, column2, ...
+FROM table_name
+WHERE column_name LIKE pattern;
+
+---
+
+Wildcard Characters in LIKE
+
+1. `%` (Percent Sign)  
+   - Matches zero or more characters.  
+   - Use Case: Search for values that start, contain, or end with specific characters.
+
+   Examples:
+   - Starts with 'J':
+     SELECT first_name
+     FROM hr.employees
+     WHERE first_name LIKE 'J%';
+     Explanation: Matches names like "John", "James", "Julia".
+
+   - Ends with 'n':
+     SELECT first_name
+     FROM hr.employees
+     WHERE first_name LIKE '%n';
+     Explanation: Matches names like "John", "Ethan", "Megan".
+
+   - Contains 'ar':
+     SELECT first_name
+     FROM hr.employees
+     WHERE first_name LIKE '%ar%';
+     Explanation: Matches names like "Mark", "Clara", "Darren".
+
+---
+
+2. `_` (Underscore)  
+   - Matches exactly one character.  
+   - Use Case: Search for values with a specific character pattern.
+
+   Examples:
+   - Starts with 'J' and is 4 characters long:
+     SELECT first_name
+     FROM hr.employees
+     WHERE first_name LIKE 'J___';
+     Explanation: Matches names like "John", "Jake", "Jill".
+
+   - Second character is 'a':
+     SELECT first_name
+     FROM hr.employees
+     WHERE first_name LIKE '_a%';
+     Explanation: Matches names like "Mark", "Jack", "Jane".
+
+---
+
+Escape Character in LIKE
+- Sometimes, you may need to match wildcard characters (`%`, `_`) as literal values instead of their special meaning.
+- Use the `ESCAPE` keyword to define an escape character.
+
+Syntax:
+SELECT column1
+FROM table_name
+WHERE column_name LIKE 'pattern' ESCAPE 'escape_char';
+
+Examples:
+- Match a literal `%`:
+  SELECT first_name
+  FROM hr.employees
+  WHERE first_name LIKE '100%%' ESCAPE '%';
+  Explanation: Matches "100%" as a literal string.
+
+- Match a literal `_`:
+  SELECT first_name
+  FROM hr.employees
+  WHERE first_name LIKE 'A\_B%' ESCAPE '\';
+  Explanation: Matches values like "A_Brown", "A_Baker".
+
+---
+
+Combining LIKE with Other Operators
+- You can combine `LIKE` with logical operators (`AND`, `OR`) for complex conditions.
+
+Example:
+SELECT first_name
+FROM hr.employees
+WHERE first_name LIKE 'J%' AND department_id = 10;
+Explanation: Matches employees whose names start with "J" and belong to department 10.
+
+---
+
+Summary
+- The `LIKE` operator is a powerful tool for pattern matching in BigQuery.
+- `%`: Matches zero or more characters.
+- `_`: Matches exactly one character.
+- Escape Character: Allows matching wildcard characters as literals.
+- Combine `LIKE` with other SQL constructs for advanced querying.
