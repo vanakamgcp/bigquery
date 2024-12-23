@@ -1,0 +1,116 @@
+BigQuery Notes: ORDER BY Clause
+
+What is ORDER BY?
+- The `ORDER BY` clause is used to sort the result set in ascending (ASC) or descending (DESC) order.
+- By default, the `ORDER BY` clause sorts in ascending order.
+
+---
+
+Syntax
+SELECT column1, column2, ...
+FROM table_name
+ORDER BY column_name [ASC|DESC];
+
+- ASC: Sorts in ascending order (default).
+- DESC: Sorts in descending order.
+
+---
+
+Sorting by Single Column
+
+1. Ascending Order  
+   SELECT employee_id, first_name, department_id
+   FROM hr.employees
+   ORDER BY employee_id ASC;
+
+   Explanation: Sorts employees by `employee_id` in ascending order.
+
+2. Descending Order  
+   SELECT employee_id, first_name, department_id
+   FROM hr.employees
+   ORDER BY employee_id DESC;
+
+   Explanation: Sorts employees by `employee_id` in descending order.
+
+---
+
+Sorting by Multiple Columns
+- Sorting by multiple columns can be used to organize data hierarchically.
+- The sorting is performed in the order the columns are listed.
+
+Example:
+SELECT employee_id, first_name, department_id
+FROM hr.employees
+ORDER BY department_id ASC, employee_id DESC;
+
+Explanation:
+1. Employees are sorted by `department_id` in ascending order.
+2. Within each `department_id`, employees are further sorted by `employee_id` in descending order.
+
+---
+
+Sorting by Column Alias
+- You can sort results using a column alias defined in the `SELECT` statement.
+
+Example:
+SELECT employee_id, first_name, salary * 0.1 AS bonus
+FROM hr.employees
+ORDER BY bonus DESC;
+
+Explanation:
+- The results are sorted by the alias `bonus` in descending order.
+
+---
+
+Using Concatenation with `||` in ORDER BY
+- You can concatenate columns and sort based on the concatenated result.
+
+Example:
+SELECT employee_id, first_name || ' ' || last_name AS full_name, department_id
+FROM hr.employees
+ORDER BY full_name ASC;
+
+Explanation:
+- Concatenates `first_name` and `last_name` to form `full_name`.
+- Results are sorted alphabetically by `full_name` in ascending order.
+
+---
+
+Real-Time Examples
+
+1. E-Commerce:  
+   Scenario: Sort orders by `order_date` (ascending) and `total_amount` (descending).  
+   Query:
+   SELECT order_id, customer_name, order_date, total_amount
+   FROM orders
+   ORDER BY order_date ASC, total_amount DESC;
+
+   Explanation: Orders are sorted by the date they were placed. Within the same date, they are sorted by the highest `total_amount`.
+
+2. Education:  
+   Scenario: Sort students by `grade` (descending) and `last_name` (ascending).  
+   Query:
+   SELECT student_id, first_name, last_name, grade
+   FROM students
+   ORDER BY grade DESC, last_name ASC;
+
+   Explanation: Students with higher grades appear first. Within the same grade, students are sorted alphabetically by `last_name`.
+
+3. Healthcare:  
+   Scenario: Sort patients by `admission_date` (descending) and concatenated `last_name, first_name` (ascending).  
+   Query:
+   SELECT patient_id, last_name || ', ' || first_name AS full_name, admission_date
+   FROM patients
+   ORDER BY admission_date DESC, full_name ASC;
+
+   Explanation: Recent admissions appear first. Within the same date, patients are sorted alphabetically by their full name.
+
+---
+
+Summary
+- ORDER BY sorts query results in ascending or descending order.
+- Supports sorting by:
+  - Single or multiple columns.
+  - Column aliases.
+  - Concatenated columns using `||`.
+- Real-life use cases include organizing employee records, sorting orders by date and amount, and arranging student grades hierarchically.
