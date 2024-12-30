@@ -1,0 +1,146 @@
+BigQuery Date Functions:
+
+Bigquery supports following date functions.
+DATE, DATETIME, TIMESTAMP, TIME
+
+To handle DATE values,
+    DATE
+    CURRENT_DATE()
+    DATE_ADD()
+    DATE_DIFF()
+    DATE_SUB()
+    DATE_TRUNC()
+    EXTRACT()
+    LAST_DAY()
+    FORMAT_DATE()
+    PARSE_DATE()
+To handle DATETIME values,
+    DATETIME
+    CURRENT_DATETIME()
+    DATETIME_ADD()
+    DATETIME_DIFF()
+    DATETIME_SUB()
+    DATETIME_TRUNC()
+    EXTRACT()
+    LAST_DAY()
+    FORMAT_DATETIME()
+    PARSE_DATETIME()
+To handle TIME values,
+    TIME
+    CURRENT_TIME()
+    TIME_ADD()
+    TIME_DIFF()
+    TIME_SUB()
+    TIME_TRUNC()
+To handle TIMESTAMP values,
+    TIMESTAMP
+    CURRENT_TIMESTAMP()
+    TIMESTAMP_ADD()
+    TIMESTAMP_DIFF()
+    TIMESTAMP_SUB()
+    TIMESTAMP_TRUNC()
+    EXTRACT()
+    FORMAT_TIMESTAMP()
+    PARSE_TIMESTAMP()
+
+1. DATE()
+   - Purpose: Creates a date value.
+   - Syntax:
+     DATE(year, month, day)
+   - Example:
+     SELECT DATE(2024, 12, 28) AS created_date;
+     -- Result: 2024-12-28
+   - Use Case: To create a date from year, month, and day inputs.
+
+---
+
+2. CURRENT_DATE()
+   - Purpose: Returns the current date.
+   - Syntax:
+     CURRENT_DATE([time_zone])
+   - Example:
+     SELECT CURRENT_DATE() AS today_date;
+     -- Result: Current system date
+   - Use Case: To fetch the current date for real-time reporting.
+
+---
+
+3. DATE_ADD()
+   - Purpose: Adds a specified interval to a date.
+   - Syntax:
+     DATE_ADD(date, INTERVAL value part)
+   - Example:
+     SELECT DATE_ADD(DATE '2024-12-28', INTERVAL 10 DAY) AS added_date;
+     -- Result: 2025-01-07
+   - Use Case: To calculate future dates.
+
+---
+
+4. DATE_DIFF()
+   - Purpose: Calculates the difference between two dates.
+   - Syntax:
+     DATE_DIFF(date1, date2, part)
+   - Example:
+     SELECT DATE_DIFF(DATE '2024-12-28', DATE '2024-12-18', DAY) AS days_diff;
+     -- Result: 10
+   - Use Case: To calculate the duration between two dates.
+
+---
+
+5. DATE_SUB()
+   - Purpose: Subtracts a specified interval from a date.
+   - Syntax:
+     DATE_SUB(date, INTERVAL value part)
+   - Example:
+     SELECT DATE_SUB(DATE '2024-12-28', INTERVAL 10 DAY) AS subtracted_date;
+     -- Result: 2024-12-18
+   - Use Case: To calculate past dates.
+
+---
+
+6. DATE_TRUNC()
+   - Purpose: Truncates a date to a specific part (e.g., year, month).
+   - Syntax:
+     DATE_TRUNC(date, part)
+   - Example:
+     SELECT DATE_TRUNC(DATE '2024-12-28', MONTH) AS truncated_date;
+     -- Result: 2024-12-01
+   - Use Case: To group dates by specific parts for aggregation.
+
+---
+
+7. LAST_DAY()
+   - Purpose: Returns the last day of the specified date's part.
+   - Syntax:
+     LAST_DAY(date, part)
+   - Example:
+     SELECT LAST_DAY(DATE '2024-12-28', MONTH) AS last_day_month;
+     -- Result: 2024-12-31
+   - Use Case: To calculate month-end dates.
+
+---
+
+8. FORMAT_DATE()
+   - Purpose: Formats a date according to a specific pattern.
+   - Syntax:
+     FORMAT_DATE(format_string, date)
+   - Example:
+     SELECT FORMAT_DATE('%d-%m-%Y', DATE '2024-12-28') AS formatted_date;
+     -- Result: 28-12-2024
+   - Use Case: To display dates in a custom format.
+
+---
+
+9. PARSE_DATE()
+   - Purpose: Converts a string into a DATE based on a specified format.
+   - Syntax:
+     PARSE_DATE(format_string, date_string)
+   - Example:
+     SELECT PARSE_DATE('%Y-%m-%d', '2024-12-28') AS parsed_date;
+     -- Result: 2024-12-28
+   - Use Case: To convert string-based dates into DATE format.
+
+---
+
+Summary:
+These date functions in BigQuery provide powerful tools for handling and manipulating dates, enabling efficient date-based calculations and formatting for data analysis and reporting.

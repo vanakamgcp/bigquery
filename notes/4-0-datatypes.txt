@@ -1,0 +1,121 @@
+
+-- Datatype is a type of data. For example whether data is number or char or special chars.
+-- Datatype of column only allows the data of defined datatype.
+
+-- BigQuery supports a variety of data types to handle diverse data processing needs. 
+
+-- STRING
+-- INT64 (INTEGER)
+-- FLOAT64 (FLOAT)    -- 5.50, 1.25
+-- NUMERIC            -- 4.3216
+-- BOOL (BOOLEAN)     -- true or false
+-- DATE
+-- DATETIME
+-- TIME
+-- TIMESTAMP
+
+-- BYTES
+-- ARRAY
+-- STRUCT
+
+1. STRING
+- Purpose: Used to store text data. (Whatever the data may be,if it is enclosed in single quotes('') then it is considered as STRING data)
+- Example:
+  SELECT 'Hello, BigQuery' AS example_string, '123' AS num_as_string, 'true' as bool_as_string, '10.00' as dec_as_string;
+- Real-Time Use Case: Storing customer names, product descriptions, or email addresses.
+
+2. INT64 (INTEGER)
+- Purpose: Stores whole numbers.
+- Example:
+  SELECT 12345 AS example_integer;
+- Real-Time Use Case: Storing employee IDs, product quantities, or order numbers.
+
+3. FLOAT64 (FLOAT)
+- Purpose: Stores decimal numbers.
+- Example:
+  SELECT 12345.67 AS example_float;
+- Real-Time Use Case: Storing product prices, weights, or financial transaction amounts.
+
+4. NUMERIC
+- Purpose: Stores high-precision decimal numbers. Precision upto 38 digits.
+- Example:
+  SELECT NUMERIC '12345.6789' AS example_numeric;
+- Real-Time Use Case: Financial calculations, such as interest rates or large monetary values.
+
+5. BOOL (BOOLEAN)
+- Purpose: Stores true/false values.
+- Example:
+  SELECT TRUE AS example_boolean;
+- Real-Time Use Case: Indicating if a customer is active or inactive, or if a product is in stock.
+
+6. BYTES
+- Purpose: Stores binary data.
+- Example:
+  SELECT FROM_BASE64('SGVsbG8=') AS example_bytes;
+- Real-Time Use Case: Storing images, encrypted data, or file content in binary format.
+
+7. DATE
+- Purpose: Stores calendar dates.
+- Example:
+  SELECT DATE '2024-01-01' AS example_date;
+- Real-Time Use Case: Storing employee joining dates or order shipment dates.
+
+8. DATETIME
+- Purpose: Stores date and time (without time zone).
+- Example:
+  SELECT DATETIME '2024-01-01 12:30:00' AS example_datetime;
+- Real-Time Use Case: Logging user activity timestamps.
+
+9. TIME
+- Purpose: Stores time of day.
+- Example:
+  SELECT TIME '12:30:00' AS example_time;
+- Real-Time Use Case: Storing business opening hours or schedule times.
+
+10. TIMESTAMP
+- Purpose: Stores date and time with time zone information.
+- Example:
+  SELECT CURRENT_TIMESTAMP() AS example_timestamp;
+- Real-Time Use Case: Recording event logs or system audit trails.
+
+11. ARRAY Data Type
+- Purpose: Stores an ordered list of values.
+- Example:
+  SELECT [1, 2, 3, 4, 5] AS example_array;
+- Real-Time Use Case: Storing a list of product IDs purchased in a single order.
+
+---
+
+12. STRUCT Data Type
+- Purpose: Groups multiple fields into a single composite value.
+- Example:
+  SELECT STRUCT('John Doe' AS name, 35 AS age) AS example_struct;
+- Real-Time Use Case: Storing complex data such as a customer record with multiple attributes.
+
+---
+
+Summary
+BigQuery provides diverse data types to efficiently store and query data:
+1. Scalar Types: Simple values like strings, numbers, and dates.
+2. Array Types: Lists of values.
+3. Struct Types: Grouped fields representing a single entity.
+
+Understanding and using these types ensures efficient and accurate data processing in real-world applications.
+
+
+1.DATE:
+Represents a calendar date in the format YYYY-MM-DD.
+Example: 2024-01-01.
+
+2.TIME:
+Represents the time of the day in the format HH:MM:SS.
+Example: 10:15:30.
+
+3.DATETIME:
+Combines date and time without a timezone.
+Example: 2024-01-01 10:15:30.
+
+4.TIMESTAMP:
+Combines date and time with timezone information.
+Example: 2024-01-01 10:15:30 UTC.
+

@@ -1,0 +1,167 @@
+-- Single row function:
+--   Functions returns output for each rows are called single row functions.
+
+-- Types:
+  -- Case Manipulation Function
+  -- Char Function
+  -- Number Function
+  -- Date Function
+  -- Conversion Function
+  -- General Function
+
+-- Case Manipulation Functions:
+--   Functions used to handle the case type of input.
+--   Each function takes only one arguement.
+
+--   There are three functions.
+--     UPPER()  - Convert input into upper case irrespective of case type of input.
+--     LOWER()  - Convert input into lower case irrespective of case type of input.
+--     INITCAP()- Convert input into initcap case irrespective of case type of input.
+
+
+-- SELECT UPPER('AJITH'), UPPER('ajith'), UPPER('Ajith Kumar')
+
+-- SELECT LOWER('ajith'), LOWER('AJITH'), LOWER('Ajith Kumar')
+
+-- SELECT INITCAP('ajith'), INITCAP('AJITH'), INITCAP('Ajith Kumar')
+
+-- SELECT * FROM hr.employees WHERE UPPER(first_name) = 'STEVEN'
+------------------------------------------------------------------------------------------------------------------------------
+-- Char functions
+-- These functions are used on string values.
+
+-- Types of functions
+    -- SUBSTR()
+    -- INSTR()
+    -- LPAD()
+    -- RPAD()
+    -- LTRIM()
+    -- RTRIM()
+
+
+-- SUBSTR()
+-- Substract the portion from the string
+
+-- '+91-8839654782'  --> 91
+-- '+61-4597024' --> 61
+-- '+05-55685854' --> 05
+
+-- syntax: SUBSTR(string_expression*, start_pos_to_start_substract*, length)
+    -- * - mandatory arguements
+    -- string_exp : source string to search
+    -- start_pos_to_start_substract : starting position to substract
+    -- length - by default it will take total length of the input.
+
+SELECT SUBSTR('+91-8839654782',2)
+SELECT SUBSTR('+91-8839654782',2,2);
+
+SELECT * FROM hr.employees WHERE SUBSTR(first_name,1,1) = 'A';
+SELECT first_name, SUBSTR(first_name,1,3) FROM hr.employees;
+
+-- INSTR() - IN the STRing.
+-- Returns the position of the first occurrence of a substring in a string. Returns 0 if not found.
+
+-- Syntax: INSTR(string_exp*, search_string*, start_pos_to_start_search, occurence_of_search_string_to_search)
+    -- * - mandatory arguements
+    -- string_exp  : source string to search
+    -- search_string : search string to search in string_exp
+    -- start_pos_to_start_search : starting position to start search. By default value is 1.
+    -- occurence_of_search_string_to_search : if more than one search_string is present in source string which occurance of string to search. By default value is 1.
+
+SELECT INSTR('Google Bigquery','e',7,1);
+SELECT last_name, INSTR(last_name,'e',1,3) FROM hr.employees WHERE INSTR(last_name,'e',1,3) != 0;
+
+SELECT INSTR(LOWER('Aravindan'),'a',1,3) ;
+
+SELECT email FROM hr.employees;
+
+
+-- LPAD(str_exp,total_length,pad_str)
+    -- It is used to append the pad_str to str_exp from LEFT side upto total length.
+    -- It takes 3 args.
+    -- All are mandatory args.
+    -- str_exp : string expression for padding.
+    -- tot_len : total length after padding.
+    -- pad_str : string to be pad.
+
+-- how many pad_str to be added = total_length - length of str exp
+
+SELECT LPAD('MECH',8,'%');
+
+SELECT LPAD('MECHANIC',8,'%'); -- 8 - 8 = 0
+
+SELECT first_name, LPAD(first_name,10,'*') FROM hr.employees;
+
+8838170755
+*******755
+883*******
+
+-- RPAD(str_exp,total_length,pad_str)
+    -- It is used to append the pad_str to str_exp from RIGHT side upto total length.
+    -- It takes 3 args.
+    -- All are mandatory args.
+    -- str_exp : string expression for padding.
+    -- tot_len : total length after padding.
+    -- pad_str : string to be pad.
+
+
+'*****MECH'
+'MECH*****'
+
+-----------------------------------------------------------------------------------------------------
+LENGTH():
+  - returns the number of char in string including spaces and special chars.
+  - It takes only one argument.
+
+SELECT first_name, LENGTH(first_name) FROM hr.employees;
+
+-- return the employees details whose mail id has more than 10 char.
+
+-- return the employee details whose name has more than 8 letters.(first name and last name combined)
+
+TRIM():
+  - Used to trims the values from both sides.
+  - trim function check the trim_value from both sides of str_exp, if matches it trim it until matches failes.
+  - Syntax: TRIM(str_exp,trim_value)
+      - str_exp* : input string
+      - trim_value: default value is space.
+
+LTRIM():
+  - Used to trims the values from left side only.
+  - trim function check the trim_value from left side of str_exp, if matches it trim it until matches failes.
+  - Syntax: TRIM(str_exp,trim_value)
+      - str_exp* : input string
+      - trim_value: default value is space.
+
+RTRIM():
+  - Used to trims the values from right side.
+  - trim function check the trim_value from right side of str_exp, if matches it trim it until matches failes.
+  - Syntax: TRIM(str_exp,trim_value)
+      - str_exp* : input string
+      - trim_value: default value is space.
+
+-----------------------------------------------------------------------------------------------------
+
+CONCAT()
+    - Used to concats tha given strings and numbers
+    - It take many arguements
+    - Syntax: CONCAT(arg1,arg2..)
+    - Same functionality as pipeline operator(||)
+
+REVERSE()
+    - It reverse the given string.
+    - It take only one arguement.
+    - Syntax: REVERSE(str_exp)
+
+--------------------------------------------------------------------------------------------------------
+
+REPLACE(): (search and replace whole seach word)
+    Used to replace the value as whole string.
+    Syntax: REPLACE(str_exp, from_str, to_str)
+    
+
+TRANSLATE(): (search and replace letter by letter)
+    Used to translate the src_char in str_exp with respective target_char.
+    Syntax: TRANSLATE(str_exp*, src_chars*, target_chars*)
+    If there is no respetive char for src_char, then that char is removed from str_exp.
+

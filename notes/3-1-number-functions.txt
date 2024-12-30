@@ -1,0 +1,76 @@
+BigQuery Number Functions
+
+There are many functions available to handle number values in bigquery.
+Below are most used values in bigquery.
+ROUND()
+TRUNC()
+MOD()
+ABS()
+POWER()
+
+1. ROUND()
+- Purpose: Rounds a numeric value to a specified number of decimal places.
+- Syntax:
+  ROUND(value*, decimal_places)
+  - value: The number to round.
+  - decimal_places: Optional. Specifies the number of decimal places (default is 0).
+- Example:
+  SELECT ROUND(123.456, 2) AS rounded_value;
+  -- Result: 123.46
+- Real-Time Use Case: Rounding off monetary values to two decimal places.
+
+---
+
+2. TRUNC()
+- Purpose: Truncates a numeric value to a specified number of decimal places without rounding.
+- Syntax:
+  TRUNC(value*, decimal_places)
+  - value: The number to truncate.
+  - decimal_places: Optional. Specifies the number of decimal places (default is 0).
+- Example:
+  SELECT TRUNC(123.456, 2) AS truncated_value;
+  -- Result: 123.45
+- Real-Time Use Case: Displaying consistent precision without rounding for financial data.
+
+---
+
+3. MOD()
+- Purpose: Returns the remainder of a division operation.
+- Syntax:
+  MOD(dividend*, divisor*)
+  - dividend: The number to be divided.
+  - divisor: The number by which the dividend is divided.
+- Example:
+  SELECT MOD(10, 3) AS remainder;
+  -- Result: 1
+- Real-Time Use Case: Determining even or odd numbers or calculating time intervals.
+
+---
+
+4. POWER()
+- Purpose: Calculates a number raised to the power of another number.
+- Syntax:
+  POWER(base*, exponent*)
+  - base: The base number.
+  - exponent: The exponent to raise the base.
+- Example:
+  SELECT POWER(2, 3) AS result;
+  -- Result: 8
+- Real-Time Use Case: Calculating compound interest or exponential growth in analytics.
+
+---
+
+5. ABS()
+- Purpose: Returns the absolute value of a number (removes the negative sign).
+- Syntax:
+  ABS(value)
+  - value: The input number.
+- Example:
+  SELECT ABS(-123) AS absolute_value;
+  -- Result: 123
+- Real-Time Use Case: Handling negative values in financial or measurement data.
+
+---
+
+Summary
+These number functions in BigQuery help perform essential mathematical operations such as rounding, truncation, modular arithmetic, exponentiation, and obtaining absolute values. They are widely used in data analysis and processing for precise calculations.
